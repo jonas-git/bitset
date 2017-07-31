@@ -13,6 +13,7 @@ extern "C" {
 
 #include <stddef.h>
 #include <stdint.h>
+#include <string.h>
 
 struct bitset {
 	unsigned char *data;
@@ -56,7 +57,8 @@ size_t bitset_nclear(struct bitset *set, size_t index, size_t size)
 static inline
 size_t bitset_clear(struct bitset *set)
 {
-	return bitset_rclear(set, 0, set->size);
+	memset(set->data, 0, bitset_bytes(set));
+	return set->size;
 }
 
 intmax_t bitset_resize(struct bitset *set, size_t size);
