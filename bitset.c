@@ -45,6 +45,19 @@ struct bitset *bitset_malloc(size_t num, unsigned int clear)
 	return set;
 }
 
+/* bitset_cpy(set)
+ |   creates a new [struct bitset] and copys the content
+ |   of the passed set into it;
+ |   returns a pointer to the allocated struct
+ | set: valid pointer to a [struct bitset]
+ */
+struct bitset *bitset_cpy(struct bitset *set)
+{
+	struct bitset *cpy = malloc(sizeof(struct bitset));
+	*cpy = *set;
+	return cpy;
+}
+
 /* bitset_free(set):
  |   frees memory associated with the given bitset
  | set: pointer to a [struct bitset]

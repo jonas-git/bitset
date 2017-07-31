@@ -32,6 +32,7 @@ struct bitset {
 
 struct bitset *bitset_new();
 struct bitset *bitset_malloc(size_t num, unsigned int clear);
+struct bitset *bitset_cpy(struct bitset *set);
 void bitset_free(struct bitset *set);
 
 size_t bitset_rclear(struct bitset *set, size_t begin, size_t end);
